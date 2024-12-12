@@ -1,0 +1,12 @@
+[*.{cs,vb}]
+# IDE0005: Using directive is unnecessary
+dotnet_diagnostic.IDE0005.severity = warning
+
+# Group using blocks
+resharper_csharp_blank_lines_between_using_groups = 1
+
+# IDE0065: 'using' directive placement
+csharp_using_directive_placement = inside_namespace:error
+
+# IDE0161: Convert to file-scoped namespace
+csharp_style_namespace_declarations = file_scoped:error

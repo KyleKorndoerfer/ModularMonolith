@@ -1,0 +1,52 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <!-- Warning and Errors -->
+  <PropertyGroup>
+    <!-- CA1014 = Mark assemblies with CLSCompliant -->
+    <NoWarn>$(NoWarn);CA1014</NoWarn>
+    <!-- CA1305 = Suppress globalization warnings about ToString -->
+    <NoWarn>$(NoWarn);CA1305</NoWarn>
+    <!-- CA1303 = Do not pass literals as localized parameters -->
+    <NoWarn>$(NoWarn);CA1303</NoWarn>
+    <!-- S1133 = Do not forget to remove this deprecated code someday. -->
+    <NoWarn>$(NoWarn);S1133</NoWarn>
+    <!-- S1135 = Supress to do statements -->
+    <NoWarn>$(NoWarn);S1135</NoWarn>
+    <!-- NU1903 = Package has a known high severity vulnerability -->
+    <!-- Leaving as a warning instead of an error as there is no fix for some package versions, e.g. System.Text.Json 6.0.9 -->
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1903</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <!-- Don't output XML docs warnings for release builds -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <NoWarn>$(NoWarn);CS1591;S1133;S3604</NoWarn>
+  </PropertyGroup>
+
+  <!-- Source code settings -->
+  <PropertyGroup>
+    <RepositoryUrl>https://github.com/kylekorndoerfer/ModularMonolith.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryBranch>main</RepositoryBranch>
+  </PropertyGroup>
+
+  <!-- Detect test projects -->
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('.Tests')) OR $(MSBuildProjectDirectory.Contains('\test\'))">
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(IsTestProject) != true">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    <AnalysisLevel>latest</AnalysisLevel>
+  </PropertyGroup>
+
+</Project>

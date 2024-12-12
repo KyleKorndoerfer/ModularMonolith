@@ -1,4 +1,4 @@
-# ModularMonolith
+# Modular Monolith in C#
 
 Monoliths are not inherently bad, but they can be better if the proper care is taken when building one. This repository
 is a sample implementation of a modular monolith in C# based on several sources (acknowledgements at the bottom).
@@ -6,10 +6,9 @@ is a sample implementation of a modular monolith in C# based on several sources 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Advantages of a Monolith](#advantages-of-a-monolith)
-- [Disadvantages of a Monolith](#disadvantages-of-a-monolith)
-- [Advantages of Microservices](#advantages-of-microservices)
-- [Disadvantages of Microservices](#disadvantages-of-microservices)
+- [Monolith versus a Modular Monolith](#monolith-versus-a-modular-monolith)
+- [Modular Monolith versus Microservices](#modular-monolith-versus-microservices)
+- [Technologies used](#technologies-used)
 - [Acknowledgements](#acknowledgements)
 
 ## Introduction
@@ -23,63 +22,29 @@ a single code base that can can evolve rapidly without developers stepping on ea
 particular module needs to be scaled independently, you can easily extract it into a separate service without worrying
 about tight coupling.
 
-## Advantages of a Monolith
+## Monolith versus a Modular Monolith
 
-- **Simplicity**: Monoliths are simpler to build and deploy than microservices. This can be super helpful when first 
-  starting a project because you most likely don't know what you are going to need in the beginning.
-- **Performance**: Monoliths can be faster than microservices because they don't have to communicate over a network.
-- **Development Speed**: Monoliths are faster to develop than microservices because you don't have to worry about the 
-  complexities of distributed systems.
-- **Easier to Debug**: Monoliths are easier to debug than microservices because you can step through the code in a 
-  single process.
-- **Easier to Deploy**: Monoliths are easier to deploy than microservices because you only have to deploy a single 
-  unit.
-- **Easier to Monitor**: Monoliths are easier to monitor than microservices because you can monitor the entire system 
-  in a single process.
-- **Easier to Maintain**: Monoliths are easier to maintain than microservices because you only have to maintain a 
-  single codebase.
-- **Easier to Secure**: Monoliths are easier to secure than microservices because you only have to secure a single 
-  codebase.
-- **Easier to Refactor**: Monoliths are easier to refactor than microservices because you only have to refactor a 
-  single codebase.
-- **Easier to Scale**: Monoliths are easier to scale than microservices because you only have to scale a single 
-  unit.
+| Aspect              | Monolith                                                   | Modular Monolith                                                                                       |
+|---------------------|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **Architecture**    | Usually a single or n-tier architecture                    | Consists of a single `host` that loads one or more loosely coupled modules                             |
+| **Codebase**        | Single codebase that contains all operations               | Independent projects that contain all the logic for the module                                         |
+| **Maintainability** | Can become difficult to maintain as the codebase grows     | Easier to maintain as each module is self-contained and can be developed and unit tested independently |
+| **Ease of Change**  | May require extensive changes if not carefully constructed | Modules can be added or removed with minimal impact                                                    |
 
-## Disadvantages of a Monolith
+## Modular Monolith versus Microservices
 
-- **Complexity**: Monoliths can become complex as they grow in size and complexity.
-- **Performance**: Monoliths can be slower than microservices because they have to do more work in a single process which
-  can limit the number of requests they can handle simultaneously.
-- **Development Speed**: Monoliths can be slower to develop than microservices as the code base grows, especially with a 
-  larger number of developers, due to merge conflicts if the code is not properly structured.
-- **Cost to Scale**: Monoliths can be more expensive to scale than microservices because you have to scale the entire 
-  system together.
+| Aspect          | Modular Monolith                                                                  | Microservices                                                                         |
+|-----------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| **Simplicity**  | Tends to be easier to develop and deploy                                          | Typically used for complex projects that require a lot of scalability and flexibility |
+| **Performance** | Can be faster in certain situations due to in-process communication               | Could be slower due to the increased use of network communication between services    |
+| **Deployment**  | Deployed as a single unit                                                         | Deployment of multiple services needs to be coordinated and orchestrated              |
+| **Cost**        | Initial costs are smaller due to a single unit, but scaling can be more expensive | Usually higher due to increased infrastructure                                        |
 
-## Advantages of Microservices
+## Technologies Used
 
-- **Scalability**: Microservices can be scaled independently of each other which can be more cost-effective than scaling 
-  an entire monolith.
-- **Flexibility**: Microservices can be developed and deployed independently of each other which can be more flexible 
-  than a monolith.
-- **Resilience**: Microservices can be more resilient than a monolith because if one service fails, the other services 
-  can continue to function.
-- **Technology Agnostic**: Microservices can be developed in different technologies which can be more flexible than a 
-  monolith.
-- **Easier to Understand**: Microservices can be easier to understand than a monolith because each service is smaller 
-  and more focused.
-
-## Disadvantages of Microservices
-
-- **Complexity**: Microservices can be more complex than a monolith because you have to manage multiple services 
-  instead of a single codebase.
-- **Performance**: Microservices can be slower than a monolith because they have to communicate over a network which 
-  can introduce latency.
-- **Development Speed**: Microservices can be slower to develop than a monolith because you have to manage multiple 
-  services instead of a single codebase.
-- **Cost to Scale**: Microservices can be more expensive to scale than a monolith because you have to scale each 
-  service independently.
-- **Testing**: Microservices can be harder to test than a monolith because you have to test each service 
-  independently as well as the integrations between all the services.
+- [Scalar](https://github.com/scalar/scalar): Better OpenAPI UI Client
+- [MediatR](https://github.com/jbogard/MediatR): Simple and performant implementation of the Mediator Pattern in .NET
+- [ArchUnit](https://archunitnet.readthedocs.io/en/latest/): Unit testing library that allows you to validate that your code is following stated architecture rules.
 
 ## Acknowledgements
 - **Code Maze**: [Modular Monolith Architecture In .NET](https://code-maze.com/dotnet-modular-monolith/)
